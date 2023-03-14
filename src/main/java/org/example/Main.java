@@ -60,7 +60,6 @@ public class Main {
 
 
         System.out.println(returnSixthList(stringsOfSixthTask));
-        //g a d o
 
 
     }
@@ -97,22 +96,14 @@ public class Main {
     }
 
     //6.Написать метод, который будет принимать на вход список строк и возвращать новый список, в котором будут только уникальные символы из этих слов.
-    public static List<String> returnSixthList(List<String> strings) {
-        List<String> stringsTwo = new ArrayList<>();
-        for (String s: strings) {
-            String[] elements = s.split("");
-            for (int i = 0; i < elements.length; i++) {
-                stringsTwo.add(elements[i]);
-            }
-        }
-        stringsTwo =  stringsTwo.stream().distinct().collect(Collectors.toList());
+    public static List<Character> returnSixthList(List<String> strings) {
+        List<Character> stringsTwo = new ArrayList<>();
+
+        stringsTwo = strings.stream().flatMap(el -> el.chars().mapToObj(e -> (char) e)).distinct().collect(Collectors.toList());
 
         return stringsTwo;
-
-
     }
 
-    //g a n d o n
 
 }
 
