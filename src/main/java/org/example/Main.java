@@ -57,7 +57,7 @@ public class Main {
         List<String> stringsOfSixthTask = new ArrayList<>();
         stringsOfSixthTask.add("baby");
         stringsOfSixthTask.add("sosi");
-
+        // [b,a,y,s,o,i]
 
         System.out.println(returnSixthList(stringsOfSixthTask));
 
@@ -97,12 +97,31 @@ public class Main {
 
     //6.Написать метод, который будет принимать на вход список строк и возвращать новый список, в котором будут только уникальные символы из этих слов.
     public static List<Character> returnSixthList(List<String> strings) {
-        List<Character> stringsTwo = new ArrayList<>();
 
-        stringsTwo = strings.stream().flatMap(el -> el.chars().mapToObj(e -> (char) e)).distinct().collect(Collectors.toList());
+        Set<Character> stringsTwo = new LinkedHashSet<>();
+        for (String s : strings) {
+            char[] elements = s.toCharArray();
+            for (int i = 0; i < elements.length; i++) {
+                stringsTwo.add(elements[i]);
+            }
 
-        return stringsTwo;
+        }
+
+        return new ArrayList<>(stringsTwo);
+
+
     }
+
+
+    //        stringsTwo = stringsTwo.stream().distinct().collect(Collectors.toList());
+//    List<Character> stringsTwo = new ArrayList<>();
+//        stringsTwo = strings.stream()
+//                .flatMap(el -> el.chars()
+//                        .mapToObj(e -> (char) e))
+//                .distinct()
+//                .collect(Collectors.toList());
+//
+
 
 
 }
